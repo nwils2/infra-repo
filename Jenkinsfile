@@ -40,7 +40,7 @@ pipeline {
         stage('Stage 2: Git checkout') {
             steps {
                 echo '1. Check out from git'
-                git branch: 'infra', credentialsId: 'github_login', url: 'https://github.com/nwils2/infra-repo.git' // To be updated
+                git branch: 'infra', credentialsId: 'github_login2', url: 'https://github.com/nwils2/infra-repo.git' // To be updated
             }
         }
         
