@@ -4,10 +4,10 @@
 
 # Key Pair resource
 
-resource "aws_key_pair" "Key_pair" {
+/* resource "aws_key_pair" "Key_pair" {
   key_name   = "key_pair_name"
   public_key = file("/home/ec2-user/.ssh/${var.Key_Pair_Name}.pub")
-}
+} */
 
 # IAM Policies resource : ec2_read_only, Metadata
 
@@ -100,7 +100,7 @@ resource "aws_instance" "Sonarqube-Server" {
   subnet_id              = aws_subnet.Public-Subnet-Jenkins-JavaApp-CICD.id
   vpc_security_group_ids = ["${aws_security_group.Sonarqube-SG.id}"]
   iam_instance_profile   = aws_iam_instance_profile.ec2_read_only_metadata_profile.name
-  key_name               = aws_key_pair.Key_pair.key_name
+  //key_name               = aws_key_pair.Key_pair.key_name
 
   user_data = <<-EOF
               #!/bin/bash
@@ -121,7 +121,7 @@ resource "aws_instance" "Sonarqube-Server" {
   subnet_id              = aws_subnet.Public-Subnet-Jenkins-JavaApp-CICD.id
   vpc_security_group_ids = ["${aws_security_group.Nexus-SG.id}"]
   iam_instance_profile   = aws_iam_instance_profile.ec2_read_only_metadata_profile.name
-  key_name               = aws_key_pair.Key_pair.key_name
+ // key_name               = aws_key_pair.Key_pair.key_name
 
   user_data = <<-EOF
               #!/bin/bash
@@ -145,7 +145,7 @@ resource "aws_instance" "Prometheus-Server" {
   subnet_id              = aws_subnet.Public-Subnet-Jenkins-JavaApp-CICD.id
   vpc_security_group_ids = ["${aws_security_group.Prometheus-SG.id}"]
   iam_instance_profile   = aws_iam_instance_profile.ec2_read_only_metadata_profile.name
-  key_name               = aws_key_pair.Key_pair.key_name
+  //key_name               = aws_key_pair.Key_pair.key_name
 
   user_data = file("scripts/prometheus.sh")
 
@@ -162,7 +162,7 @@ resource "aws_instance" "Grafana-Server" {
   subnet_id              = aws_subnet.Public-Subnet-Jenkins-JavaApp-CICD.id
   vpc_security_group_ids = ["${aws_security_group.Grafana-SG.id}"]
   iam_instance_profile   = aws_iam_instance_profile.ec2_read_only_metadata_profile.name
-  key_name               = aws_key_pair.Key_pair.key_name
+ // key_name               = aws_key_pair.Key_pair.key_name
 
   user_data = file("scripts/install-grafana.sh")
 
@@ -180,7 +180,7 @@ resource "aws_instance" "my_instances" {
   subnet_id              = aws_subnet.Public-Subnet-Jenkins-JavaApp-CICD.id
   vpc_security_group_ids = ["${aws_security_group.Env-SG.id}"]
   iam_instance_profile   = aws_iam_instance_profile.ec2_read_only_metadata_profile.name
-  key_name               = aws_key_pair.Key_pair.key_name
+ // key_name               = aws_key_pair.Key_pair.key_name
 
   user_data = <<-EOF
               #!/bin/bash
