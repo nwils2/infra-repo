@@ -40,7 +40,7 @@ pipeline {
         stage('Stage 2: Git checkout') {
             steps {
                 echo '1. Check out from git'
-                git branch: 'main', credentialsId: 'github_login', url: 'https://github.com/jddbetambo/airbnb.git' // To be updated
+                git branch: 'infra', credentialsId: 'github_login', url: 'https://github.com/nwils2/infra-repo.git' // To be updated
             }
         }
         
@@ -89,7 +89,7 @@ pipeline {
         }
     }
     
-	 post { 
+	 /* post { 
 		// To be updated
 		always { 
 			slackSend channel: '#jdd-jenkins-cicd', 
@@ -103,6 +103,6 @@ pipeline {
             to: 'awsjdd2@gmail.com',
             body: "********************* \n *Infrastructure Deployment* \n ********************* \n *Date*: ${formattedDate} \n *Initiated by*: Engineer JDD. \n *Server*: ${env.BUILD_URL} \n *Workspace*:${WORKSPACE} \n *Job Name*: ${env.JOB_NAME} \n *Build Number*: ${env.BUILD_NUMBER} \n *Result*: $currentBuild.currentResult" 
 		}
-	}
+	} */
 
 }
