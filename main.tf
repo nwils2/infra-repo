@@ -6,7 +6,7 @@
 
 resource "aws_key_pair" "Key_pair" {
   key_name   = "key_pair_name"
-  public_key = file("~/.ssh/${var.Key_Pair_Name}.pub")
+  public_key = file("/home/ec2-user/.ssh/${var.Key_Pair_Name}.pub")
 }
 
 # IAM Policies resource : ec2_read_only, Metadata
