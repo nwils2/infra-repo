@@ -73,13 +73,16 @@ pipeline {
 		// Terraform code scanning
 		stage('Checkov scan') {
             steps {
-               
                 sh '''
+                sudo yum install python3-pip
+                sudo yum remove python3-requests
+                sudo pip3 install requests
+                sudo pip3 install checkov
                 checkov -d . --skip-check CKV_AWS_79,CKV2_AWS_41
                 '''
             }
         }
-        
+
         // Terraform apply
         stage('Stage 7: Terraform Code to appply/destroy the plan') {
             steps {
