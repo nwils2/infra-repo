@@ -36,7 +36,7 @@ pipeline {
             }
         }
         
-        // Git Checkout to clone the repository
+        // Git Checkout to clone the  repository
         stage('Stage 2: Git checkout') {
             steps {
                 echo '1. Check out from git'
